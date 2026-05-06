@@ -45,7 +45,7 @@ void setup() {
   tft.setCursor(10, 30);
   tft.setTextColor(ST7735_GREEN);
   tft.setTextSize(1);
-  tft.println("ISSAC ENGINEER");
+  tft.println("TEST ENGINEER");
   
   tft.setCursor(10, 50);
   tft.setTextColor(ST7735_WHITE);

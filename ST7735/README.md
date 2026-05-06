@@ -82,7 +82,7 @@ Install via Arduino Library Manager:
 
 ## 📷 Output
 
-- Green header text: `ISSAC ENGINEER`
+- Green header text: `TEST ENGINEER`
 - White status text: `SYSTEM OK`
 - Screen flashes every 0.5 seconds
 

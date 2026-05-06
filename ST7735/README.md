@@ -55,7 +55,7 @@ Simple ESP32 project that initializes an ST7735 TFT screen and displays basic te
 3. Initializes ST7735 display in `INITR_BLACKTAB` mode
 4. Clears screen and sets rotation to landscape
 5. Prints two text lines:
-   - "ISSAC ENGINEER"
+   - "TEST ENGINEER"
    - "SYSTEM OK"
 6. Continuously inverts display every 500ms as a heartbeat indicator
 

@@ -4,6 +4,12 @@ A collection of adapted Arduino/ESP32-S3 sketches for programming the AT28C16 EE
 
 ---
 
+# ESP32-Ported AT28C16 EEPROM Programmer
+
+Adapted from [Ben Eater's original Arduino EEPROM Programmer](https://github.com/beneater/eeprom-programmer) repository, modified to run on **ESP32 / ESP32-S3** hardware.
+
+---
+
 ![Wiring diagram](schematicESP32e.png)
 
 ---

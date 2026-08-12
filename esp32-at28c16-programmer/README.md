@@ -6,6 +6,7 @@ A collection of adapted Arduino/ESP32-S3 sketches for programming the AT28C16 EE
 
 ## Repository Structure
 
+```text
 esp32-at28c16-programmer/
 ├── README.md
 ├── schematicESP32e.png

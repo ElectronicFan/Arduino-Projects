@@ -16,7 +16,7 @@ esp32-at28c16-programmer/
 
 ---
 
-![Wiring diagram](schematicESP32e.jpg)
+![Wiring diagram](schematicESP32e.png)
 
 ---
 

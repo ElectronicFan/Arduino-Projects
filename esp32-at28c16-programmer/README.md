@@ -1,43 +1,60 @@
-# Arduino EEPROM programmer
+# ESP32 AT28C16 EEPROM Programmer
 
-Copyright 2017 Ben Eater
+A collection of adapted Arduino/ESP32-S3 sketches for programming the AT28C16 EEPROM, ported from Ben Eater's classic 8-bit breadboard computer architecture to run on **ESP32 and ESP32-S3** hardware.
 
-This code and schematic are [MIT licensed](http://en.wikipedia.org/wiki/MIT_License).
+---
 
-## Circuit
+## Repository Structure
 
-This is a simple circuit for programming the 28C16, 28C64, 28C256, and similar parallel EEPROMs using an Arduino. Since the Arduino doesn’t have enough pins to directly control all of the address, data, and control lines of the EEPROM, two 74HC595 shift registers are used for the 11 address lines (15 for the 28C256) and the output enable control line.
+esp32-at28c16-programmer/
+├── README.md
+├── schematicESP32e.png
+├── eeprom-programmer.ino
+├── multiplexed-display.ino
+├── microcode-eeprom-programmer.ino
+└── microcode-eeprom-with-flags.ino
 
-![Schematic of EEPROM programmer](https://raw.githubusercontent.com/beneater/eeprom-programmer/master/schematic.png)
+---
 
+![Wiring diagram](schematicESP32e.jpg)
 
-## What’s here?
+---
 
-There are four different Arduino sketches that correspond to several YouTube videos. A lot of the code is duplicated since each sketch built on the previous ones. But I’ve kept them separate to make it easier to find the exact code that goes with a particular video:
+## Hardware Architecture & Wiring
 
-### 1. Basic programmer
+Unlike the original AVR/Arduino setup, this version is designed around the **ESP32 / ESP32-S3** GPIO matrix using standard digital control lines and shift registers.
 
-The code in [`/eeprom-programmer`](/eeprom-programmer) is the basic programmer that programs a few bytes into the EEPROM and dumps the contents.
+### Pinout Mapping
 
-That software, along with the EEPROM programmer’s hardware are described in detail in the following video. This is a good place to start if you’re looking for the fastest way to make sense of this repo:
-- [Build an Arduino EEPROM programmer](https://youtu.be/K88pgWhEb1M).
+| Component / Signal | ESP32 / ESP32-S3 Pin | Description |
+| :--- | :--- | :--- |
+| **Shift Data** | GPIO 21 | 74HC595 Data Input (DS) |
+| **Shift Clock** | GPIO 22 | 74HC595 Shift Register Clock (SHCP) |
+| **Shift Latch** | GPIO 23 | 74HC595 Storage Register Clock (STCP) |
+| **Write Enable (WE)** | GPIO 19 | AT28C16 Write Control Line |
+| **Data Bus (D0 - D7)** | GPIO 13, 14, 25, 26, 27, 32, 33, 4 | Bidirectional 8-bit Data Lines |
 
-### 2. 8-bit decimal display
+### Power Supply Note
+* **5V VCC:** Powered directly via the board's **5V / VBUS** pin (driven by USB) to supply the necessary voltage for reliable AT28C16 write operations.
+* **Logic Levels:** Ensure your 74HC595 shift registers and EEPROM share a clean 5V rail.
 
-The code in [`/multiplexed-display`](/multiplexed-display) is for programming an EEPROM to be used to decode 8-bit values and drive a 4-digit 7-segment display. Check out this video for more:
-- [Build an 8-bit decimal display for our 8-bit computer](https://youtu.be/dLh1n2dErzE).
+---
 
-### 3. 8-bit computer microcode
+## Project Modules
 
-The code in [`/microcode-eeprom-programmer`](/microcode-eeprom-programmer) is for programming a pair of EEPROMs to serve as an instruction decoder for an 8-bit breadboard computer. You’ll probably want to watch the whole 8-bit computer playlist (see below) for this to really make sense, but the specific videos describing the code here are:
-- [Reprogramming CPU microcode with an Arduino](https://youtu.be/JUVt_KYAp-I).
-- [Adding more machine language instructions to the CPU](https://youtu.be/FCscQGBIL-Y).
+1. **`eeprom-programmer.ino`**
+   * Core diagnostic sketch to verify read/write cycles, address shifting, and serial monitor debugging.
+2. **`multiplexed-display.ino`**
+   * Generates binary-to-7-segment lookup tables for multiplexed display drivers.
+3. **`microcode-eeprom-programmer.ino`**
+   * Configures instruction step and opcode control matrices for the 8-bit ALU architecture.
+4. **`microcode-eeprom-with-flags.ino`**
+   * Expands the control word map to incorporate conditional flag checks (Z and C status bits).
 
-### 4. 8-bit computer microcode with flags register
+---
 
-The code in [`/microcode-eeprom-with-flags`](/microcode-eeprom-with-flags) adds functionality for a flags register to the microcode above to support conditional instructions. Again, you’ll likely want more context from the full series of videos, but here’s the video describing the code:
-- [Conditional jump instructions](https://youtu.be/Zg1NdPKoosU).
+## Usage Instructions
 
-## More information
-
-This EEPROM programmer was designed as part of a larger project to build an 8-bit computer from scratch. There’s a much larger [series of videos about this project](https://www.youtube.com/playlist?list=PLowKtXNTBypGqImE405J2565dvjafglHU) on YouTube as well. In all likelihood, if this repo interests you, you want to binge that whole playlist.
+1. Open any sketch in the **Arduino IDE** or **PlatformIO**.
+2. Select your specific ESP32/ESP32-S3 board model and correct COM port.
+3. Compile and upload the sketch. Open the Serial Monitor at **115200 baud** to verify execution progress.

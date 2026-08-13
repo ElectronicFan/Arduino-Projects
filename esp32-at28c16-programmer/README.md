@@ -1,12 +1,12 @@
 # ESP32 AT28C16 EEPROM Programmer
 
-A collection of adapted Arduino/ESP32-S3 sketches for programming the AT28C16 EEPROM, ported from Ben Eater's classic 8-bit breadboard computer architecture to run on **ESP32 and ESP32-S3** hardware.
+A collection of adapted Arduino/ESP32 sketches for programming the AT28C16 EEPROM, ported from Ben Eater's classic 8-bit breadboard computer architecture to run on **ESP32 and ESP32-S3** hardware.
 
 ---
 
 # ESP32-Ported AT28C16 EEPROM Programmer
 
-Adapted from [Ben Eater's original Arduino EEPROM Programmer](https://github.com/beneater/eeprom-programmer) repository, modified to run on **ESP32 / ESP32-S3** hardware.
+Adapted from [Ben Eater's original Arduino EEPROM Programmer](https://github.com/beneater/eeprom-programmer) repository, modified to run on **ESP32** hardware.
 
 ---
 
@@ -20,7 +20,7 @@ Unlike the original AVR/Arduino setup, this version is designed around the **ESP
 
 ### Pinout Mapping
 
-| Component / Signal | ESP32 / ESP32-S3 Pin | Description |
+| Component / Signal | ESP32 Pin | Description |
 | :--- | :--- | :--- |
 | **Shift Data (SER)** | GPIO 21 | 74HC595 Data Input (SER) |
 | **Shift Clock (SRCLK)** | GPIO 22 | 74HC595 Shift Register Clock (SRCLK) |
@@ -52,3 +52,6 @@ Unlike the original AVR/Arduino setup, this version is designed around the **ESP
 1. Open any sketch in the **Arduino IDE** or **PlatformIO**.
 2. Select your specific ESP32/ESP32-S3 board model and correct COM port.
 3. Compile and upload the sketch. Open the Serial Monitor at **115200 baud** to verify execution progress.
+
+⚠️ ESP32-S3 Hardware Warning:
+Do not use GPIO 26 through 32 for general input/output (such as sensors, relays, or data lines) on an ESP32-S3. Unlike the classic ESP32, these pins are internally reserved for the chip's built-in SPI Flash and PSRAM. Using them for external data pins will cause boot loops, memory crashes, or permanent flash corruption. For safe general-purpose I/O, stick to lower-numbered free GPIOs (like GPIO 4, 13, or 14).

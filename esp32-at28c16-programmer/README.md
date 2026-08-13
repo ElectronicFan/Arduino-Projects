@@ -26,7 +26,7 @@ Unlike the original AVR/Arduino setup, this version is designed around the **ESP
 | **Shift Clock (SRCLK)** | GPIO 22 | 74HC595 Shift Register Clock (SRCLK) |
 | **Shift Latch (RCLK)** | GPIO 23 | 74HC595 Storage Register Clock (RCLK) |
 | **Write Enable (WE)** | GPIO 19 | AT28C16 Write Control Line |
-| **Data Bus (D0 - D7)** | GPIO 13, 14, 25, 26, 27, 32, 33, 4 | Bidirectional 8-bit Data Lines |
+| **ESP32e Use Data Bus (D0 - D7)** | GPIO 13, 14, 25, 26, 27, 32, 33, 4 | Bidirectional 8-bit Data Lines |
 | **ESP32-S3 Use Data Bus (D0 - D7)** | GPIO 1, 2, 4, 5, 7, 15, 16, 17 | Bidirectional 8-bit Data Lines |
 ### Power Supply Note
 * **5V VCC:** Powered directly via the board's **5V / VBUS** pin (driven by USB) to supply the necessary voltage for reliable AT28C16 write operations.

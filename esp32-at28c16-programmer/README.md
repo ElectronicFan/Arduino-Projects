@@ -6,7 +6,7 @@ A collection of adapted Arduino/ESP32 sketches for programming the AT28C16 EEPRO
 
 # ESP32-Ported AT28C16 EEPROM Programmer
 
-Adapted from [Ben Eater's original Arduino EEPROM Programmer](https://github.com/beneater/eeprom-programmer) repository, modified to run on **ESP32** hardware.
+Adapted from [Ben Eater's original Arduino EEPROM Programmer](https://github.com/beneater/eeprom-programmer) repository, modified to run on **ESP32/ESP32-S3** hardware.
 
 ---
 
@@ -53,5 +53,5 @@ Unlike the original AVR/Arduino setup, this version is designed around the **ESP
 2. Select your specific ESP32/ESP32-S3 board model and correct COM port.
 3. Compile and upload the sketch. Open the Serial Monitor at **115200 baud** to verify execution progress.
 
-⚠️ ESP32-S3 Hardware Warning:
+⚠️ **ESP32-S3 Hardware Warning:**
 Do not use GPIO 26 through 32 for general input/output (such as sensors, relays, or data lines) on an ESP32-S3. Unlike the classic ESP32, these pins are internally reserved for the chip's built-in SPI Flash and PSRAM. Using them for external data pins will cause boot loops, memory crashes, or permanent flash corruption. For safe general-purpose I/O, stick to lower-numbered free GPIOs (GPIO 1, GPIO 2, GPIO 4, GPIO 5, GPIO 7, GPIO 15, GPIO 16, GPIO 17).

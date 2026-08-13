@@ -54,4 +54,4 @@ Unlike the original AVR/Arduino setup, this version is designed around the **ESP
 3. Compile and upload the sketch. Open the Serial Monitor at **115200 baud** to verify execution progress.
 
 ⚠️ ESP32-S3 Hardware Warning:
-Do not use GPIO 26 through 32 for general input/output (such as sensors, relays, or data lines) on an ESP32-S3. Unlike the classic ESP32, these pins are internally reserved for the chip's built-in SPI Flash and PSRAM. Using them for external data pins will cause boot loops, memory crashes, or permanent flash corruption. For safe general-purpose I/O, stick to lower-numbered free GPIOs (like GPIO 4, 13, or 14).
+Do not use GPIO 26 through 32 for general input/output (such as sensors, relays, or data lines) on an ESP32-S3. Unlike the classic ESP32, these pins are internally reserved for the chip's built-in SPI Flash and PSRAM. Using them for external data pins will cause boot loops, memory crashes, or permanent flash corruption. For safe general-purpose I/O, stick to lower-numbered free GPIOs (GPIO 1, GPIO 2, GPIO 4, GPIO 5, GPIO 7, GPIO 15, GPIO 16, GPIO 17).

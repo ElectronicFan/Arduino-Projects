@@ -22,9 +22,9 @@ Unlike the original AVR/Arduino setup, this version is designed around the **ESP
 
 | Component / Signal | ESP32 / ESP32-S3 Pin | Description |
 | :--- | :--- | :--- |
-| **Shift Data (SER)** | GPIO 21 | 74HC595 Data Input (DS) |
-| **Shift Clock (SRCLK)** | GPIO 22 | 74HC595 Shift Register Clock (SHCP) |
-| **Shift Latch (RCLK)** | GPIO 23 | 74HC595 Storage Register Clock (STCP) |
+| **Shift Data (SER)** | GPIO 21 | 74HC595 Data Input (SER) |
+| **Shift Clock (SRCLK)** | GPIO 22 | 74HC595 Shift Register Clock (SRCLK) |
+| **Shift Latch (RCLK)** | GPIO 23 | 74HC595 Storage Register Clock (RCLK) |
 | **Write Enable (WE)** | GPIO 19 | AT28C16 Write Control Line |
 | **Data Bus (D0 - D7)** | GPIO 13, 14, 25, 26, 27, 32, 33, 4 | Bidirectional 8-bit Data Lines |
 
